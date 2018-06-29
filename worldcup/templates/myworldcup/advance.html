@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>
+<table border="1">
+    <tr>
+        <th>组别</th>
+        <th>国家</th>
+        <th>净胜球</th>
+        <th>积分</th>
+    </tr>
+{% for best in advance %}
+    {% for team in team_list %}
+        {% if team.group == best %}
+        <tr>
+        <th>{{ team.group}}</th>
+        <th>{{ team.name}}</th>
+        <th>{{ team.GD}}</th>
+        <th>{{ team.integral}}</th>
+        </tr>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+</table>
+    </h2>
+{% endblock content %}

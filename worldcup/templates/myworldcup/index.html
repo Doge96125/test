@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if teams.number == 1 %}
+<h1>A组</h1>
+{% elif teams.number == 2  %}
+<h1>B组</h1>
+{% elif teams.number == 3 %}
+<h1>C组</h1>
+{% elif teams.number == 4  %}
+<h1>D组</h1>
+{% elif teams.number == 5  %}
+<h1>E组</h1>
+{% elif teams.number == 6  %}
+<h1>F组</h1>
+{% elif teams.number == 7  %}
+<h1>G组</h1>
+{% elif teams.number == 8  %}
+<h1>H组</h1>
+{% endif %}
+<h2>
+<table border="1">
+    <tr>
+        <th>组别</th>
+        <th>国家</th>
+        <th>净胜球</th>
+        <th>积分</th>
+    </tr>
+{% for team in teams %}
+
+    <tr>
+        <th>{{ team.group}}</th>
+        <th>{{ team.name}}</th>
+        <th>{{ team.GD}}</th>
+        <th>{{ team.integral}}</th>
+    </tr>
+{% endfor %}
+</table>
+</h2>
+<h3>
+<div class="pagination">
+    <span class="step-links">
+        {% if teams.has_previous %}
+            <a href="?page={{ teams.previous_page_number }}">上一页</a>
+        {% endif %}
+
+        <span class="current">
+            第{{ teams.number }}页，共{{ teams.paginator.num_pages }}页
+        </span>
+
+        {% if teams.has_next %}
+            <a href="?page={{ teams.next_page_number }}">下一页</a>
+        {% endif %}
+    </span>
+</div>
+</h3>
+{% endblock content %}
